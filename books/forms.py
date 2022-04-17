@@ -1,4 +1,4 @@
-from django.forms import form
+from django import forms
 from django.forms.models import (
     inlineformset_factory,
     modelform_factory,

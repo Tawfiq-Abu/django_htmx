@@ -18,6 +18,7 @@ def create_book(request,pk):
             return redirect("create-book",pk=author.id)
 
     context = {
-        "formset":formset
+        "formset":formset,
+        "author":author
     }
     return render(request,"create_book.html",context)
