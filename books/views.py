@@ -1,4 +1,5 @@
 from multiprocessing import context
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import Author,Book
 from .forms import BookFormSet,BookForm
@@ -44,3 +45,8 @@ def detail_book(request,pk):
         "book": book
     }
     return render(request,'partials/book_detail.html',context)
+
+def delete_book(request,pk):
+    book = Book.objects.get(pk=pk)
+    book.delete()
+    return HttpResponse('')
