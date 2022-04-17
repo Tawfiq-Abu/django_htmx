@@ -14,6 +14,8 @@ when we create the response it'll add  the response to the div down there with t
 </button>
 
 <div id="bookforms" style='border:1px solid black'>
-
+    {% for book in books %}
+    {% include 'partials/book_detail.html' %}
+    {% endfor %}
 </div>
 {% endblock %}

@@ -1,6 +1,20 @@
 {% extends '../base.html' %}
 {% block content %}
-{% csrf_token %}
-{{form.as_p}}
+<!-- 
+    hx-target = "this" means the target is that particular div
+    hx-swap = "outerHTML" means it should swap the whole html with the data coming in from the backend redirect
+    hx-post = "." - first we need to add hx-post to the buton to make it a htmx submit  instead of a normal post submit and the . there means submit to the current url
+
+
+
+ -->
+
+<div hx-target="this" hx-swap="outerHTML">
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="sumit" hx-post=".">Submit</button>
+    </form>
+</div>
 
 {% endblock content %}

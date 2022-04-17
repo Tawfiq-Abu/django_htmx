@@ -1,0 +1,12 @@
+{% extends '../base.html' %}
+{% block content %}
+
+<div>
+    <h2>{{book.title}}</h2>
+    <p>Number of pages:{{book.number_of_pages}}</p>
+
+    <button hx-get="">Update</button>
+    <button hx-post="">Delete</button>
+</div>
+
+{% endblock content %}
