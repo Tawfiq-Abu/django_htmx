@@ -1,7 +1,7 @@
 from multiprocessing import context
 from django.shortcuts import redirect, render
 from .models import Author,Book
-from .forms import BookFormSet
+from .forms import BookFormSet,BookForm
 
 # Create your views here.
 
@@ -22,3 +22,11 @@ def create_book(request,pk):
         "author":author
     }
     return render(request,"create_book.html",context)
+
+
+def create_book_form(request):
+    form = BookForm()
+    context = {
+        "form": form
+    }
+    return render(request,'partials/bookform.html',context)
