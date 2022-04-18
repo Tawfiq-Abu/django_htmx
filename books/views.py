@@ -38,6 +38,19 @@ def create_book_form(request):
     }
     return render(request,'partials/bookform.html',context)
 
+def update_book(request,pk):
+    book = Book.objects.get(pk=pk)
+    form = BookForm(request.POST or None,instance=book)
+    if request.method == 'POST':
+        if form.is_valid():
+            book = form.save()
+            return redirect("detail-book",pk=book.id)
+    context = {
+        "form": form,
+        "book":book 
+    }
+    return render(request,'partials/bookform.html',context)
+
 
 def detail_book(request,pk):
     book = Book.objects.get(pk=pk)
